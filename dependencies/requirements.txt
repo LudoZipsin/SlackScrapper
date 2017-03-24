@@ -1,0 +1,5 @@
+slackclient
+robobrowser
+beautifulsoup4
+request
+lxml
