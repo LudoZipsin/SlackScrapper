@@ -14,7 +14,7 @@ RUN pip3 install setuptools \
                  lxml
 
 ARG slack_token
-ARG packtput_login
+ARG packtpub_login
 ARG packtpub_pass
 
 ENV SCRAPPER_SLACK_TOKEN=$slack_token
