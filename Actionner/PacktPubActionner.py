@@ -21,7 +21,6 @@ class PacktPubActionner(Actionner):
     def fetch_free_learning(self) -> dict:
         url_book_list = "/account/my-ebooks"
         url_free_learning = "/packt/offers/free-learning"
-        pattern_free_ebook = "/freelearning-claim/"
         form_id = "packt-user-login-form"
 
         browser = RoboBrowser(user_agent=CUSTOM_USER_AGENT, parser="lxml")
