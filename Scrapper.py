@@ -7,7 +7,6 @@ from yapsy.PluginManager import PluginManager
 
 PLUGIN_BASE_DIR_DEV = "modules"
 PLUGIN_BASE_DIR = "/opt/slackscrapper/modules"
-PLUGIN_DIR_NAME = "/opt/slackscrapper"
 
 
 def _available_module() -> list:
@@ -28,6 +27,9 @@ def _actioning(arg_action: str, my_plugin_manager: PluginManager):
     if arg_action in plugin.plugin_object.actions():
         func = getattr(plugin.plugin_object, arg_action)
         func()
+    else:
+        utils.error("No action {action} found. Does your action exists and contains no typos ?",
+                    name="action", lst=plugin.plugin_object.actions())
 
 
 if __name__ == "__main__":

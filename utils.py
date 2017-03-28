@@ -3,7 +3,8 @@ import sys
 BASE_ERROR_MSG = "Exiting..."
 ACTION_TO_IGNORE = {"__init__",
                     "activate",
-                    "deactivate"}
+                    "deactivate",
+                    "actions"}
 ACTION_PATTERN_TO_IGNORE = "_"
 
 
