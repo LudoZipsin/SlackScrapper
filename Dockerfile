@@ -20,9 +20,8 @@ ENV SCRAPPER_SLACK_TOKEN=$slack_token
 ENV PACKTPUB_LOGIN=$packtpub_login
 ENV PACKTPUB_PASS=$packtpub_pass
 
-RUN mkdir -p  /opt/slackscrapper/Actionner
-COPY Scrapper.py Client.py /opt/slackscrapper/
-COPY Actionner/* /opt/slackscrapper/Actionner/
+RUN mkdir -p  /opt/slackscrapper/
+COPY * /opt/slackscrapper/
 RUN chmod +x /opt/slackscrapper/Scrapper.py
 ENTRYPOINT ["python3","/opt/slackscrapper/Scrapper.py"]
 
