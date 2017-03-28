@@ -21,7 +21,7 @@ def _plugin_loader(arg_module: str, my_plugin_manager: PluginManager):
     my_plugin_manager.collectPlugins()
 
 
-def _actionning(arg_action: str, my_plugin_manager: PluginManager):
+def _actioning(arg_action: str, my_plugin_manager: PluginManager):
     plugin = utils.simplify_list(my_plugin_manager.getAllPlugins())
     if arg_action in plugin.plugin_object.actions():
         func = getattr(plugin.plugin_object, arg_action)
@@ -37,4 +37,4 @@ if __name__ == "__main__":
 
     plugin_manager = PluginManager()
     _plugin_loader(args.module, plugin_manager)
-    _actionning(args.action, plugin_manager)
+    _actioning(args.action, plugin_manager)

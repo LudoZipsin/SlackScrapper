@@ -29,7 +29,6 @@ class PacktPubPlugin(IPlugin):
         }
 
     def actions(self):
-        print(str(utils.remove_action_to_ignore(inspect.getmembers(self,  predicate=inspect.ismethod))))
         return utils.remove_action_to_ignore(inspect.getmembers(self,  predicate=inspect.ismethod))
 
     def fetch_free_learning(self):

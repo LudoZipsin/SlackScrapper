@@ -9,9 +9,8 @@ RUN apt-get update && \
 RUN pip3 install setuptools \
 		 slackclient \
                  robobrowser \
-                 beautifulsoup4 \
-                 request \
-                 lxml
+                 lxml \
+                 yapsy
 
 ARG slack_token
 ARG packtpub_login
