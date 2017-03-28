@@ -24,9 +24,8 @@ class PacktPubPlugin(IPlugin):
     @staticmethod
     def _initialize() -> dict:
         return {"client": Client.Client(),
-                "login" : os.environ.get(ENV_LOGIN),
-                "password" : os.environ.get(ENV_PASS)
-        }
+                "login": os.environ.get(ENV_LOGIN),
+                "password": os.environ.get(ENV_PASS)}
 
     def actions(self):
         return utils.remove_action_to_ignore(inspect.getmembers(self,  predicate=inspect.ismethod))

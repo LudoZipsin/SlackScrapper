@@ -11,7 +11,7 @@ PLUGIN_DIR_NAME = "/opt/slackscrapper"
 
 
 def _available_module() -> list:
-    return [module for module in os.listdir(PLUGIN_DIR_NAME)]
+    return [module for module in os.listdir(PLUGIN_BASE_DIR) if module[0] != "_"]
 
 
 def _plugin_loader(arg_module: str, my_plugin_manager: PluginManager):
