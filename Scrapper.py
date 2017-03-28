@@ -7,10 +7,11 @@ from yapsy.PluginManager import PluginManager
 
 PLUGIN_BASE_DIR_DEV = "modules"
 PLUGIN_BASE_DIR = "/opt/slackscrapper/modules"
+PLUGIN_DIR_NAME = "/opt/slackscrapper"
 
 
 def _available_module() -> list:
-    return os.listdir(PLUGIN_BASE_DIR)
+    return [module for module in os.listdir(PLUGIN_DIR_NAME)]
 
 
 def _plugin_loader(arg_module: str, my_plugin_manager: PluginManager):
