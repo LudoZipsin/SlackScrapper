@@ -5,7 +5,8 @@ import utils
 
 from yapsy.PluginManager import PluginManager
 
-PLUGIN_BASE_DIR = "modules"
+PLUGIN_BASE_DIR_DEV = "modules"
+PLUGIN_BASE_DIR = "/opt/slackscrapper/modules"
 
 
 def _available_module() -> list:
