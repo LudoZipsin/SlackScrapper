@@ -3,3 +3,4 @@ Actionner/__pycache__/*
 __pycache__/*
 virtualenv/*
 .gitignore.swap
+try/*

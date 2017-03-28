@@ -1,0 +1,9 @@
+[Core]
+Name = PacktPub
+Module = packtpub
+
+[Documentation]
+Author = Ludovic Zipsin
+Version = 0.1
+Website = https://github.com/LudoZipsin/SlackScrapper
+Description = A little plugin to operate basic action on packtpub. Only free learning fetching right now

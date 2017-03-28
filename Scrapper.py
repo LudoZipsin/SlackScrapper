@@ -1,28 +1,40 @@
-import Client
-import argparse, os, sys
+import argparse
+import os
+
+import utils
+
+from yapsy.PluginManager import PluginManager
+
+PLUGIN_BASE_DIR = "modules"
+
+
+def _available_module() -> list:
+    return os.listdir(PLUGIN_BASE_DIR)
+
+
+def _plugin_loader(arg_module: str, my_plugin_manager: PluginManager):
+    load = arg_module if arg_module in _available_module() else None
+    if load is None:
+        utils.error("No module {module} found. Does the plugin you want exist and contains no typos ?",
+                    name="module", lst=_available_module())
+    my_plugin_manager.setPluginPlaces([os.path.join(PLUGIN_BASE_DIR, arg_module)])
+    my_plugin_manager.collectPlugins()
+
+
+def _actionning(arg_action: str, my_plugin_manager: PluginManager):
+    plugin = utils.simplify_list(my_plugin_manager.getAllPlugins())
+    if arg_action in plugin.plugin_object.actions():
+        func = getattr(plugin.plugin_object, arg_action)
+        func()
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(prog="slackscrapper")
     required = parser.add_argument_group("required named arguments")
-    required.add_argument('-m', '--module', help="The name of the module you want to call", required=True)
-    required.add_argument('-a', '--action', help="The name of the action you want to call", required=True)
+    required.add_argument("-m", "--module", help="The name of the module you want to call.", required=True)
+    required.add_argument("-a", "--action", help="The name of the action you want to call.", required=True)
     args = parser.parse_args()
 
-    client = Client.Client()
-    # print(client.list_actionner())
-
-    if args.module + "Actionner" in client.list_actionner() or args.module in client.list_actionner():
-        func = getattr(client, str(args.module).replace("Actionner", "").lower())
-        func(action=args.action)
-    else:
-        print([c.replace("Actionner", "") for c in client.list_actionner()])
-        err_msg = "The module '" + args.module + "' is not a valid module. Please, select one among: "
-        first_line_printer = True
-        for module in [c.replace("Actionner", "") for c in client.list_actionner()]:
-            if not first_line_printer:
-                err_msg = " "*len(err_msg)
-            else:
-                first_line_printer = False
-            print(err_msg + module)
-
-        sys.exit(1)
+    plugin_manager = PluginManager()
+    _plugin_loader(args.module, plugin_manager)
+    _actionning(args.action, plugin_manager)
