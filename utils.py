@@ -26,7 +26,7 @@ def list_printer(name: str, lst: list) -> None:
             print(base_msg + l)
             fill = True
         else:
-            print(fill + l)
+            print(filler + l)
 
 
 def simplify_list(lst: list):
